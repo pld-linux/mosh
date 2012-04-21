@@ -2,7 +2,7 @@
 Summary:	Mosh mobile shell
 Name:		mosh
 Version:	1.1.3
-Release:	0.5
+Release:	1
 License:	GPL v3+
 Group:		X11/Applications
 Source0:	https://github.com/downloads/keithw/mosh/%{name}-%{version}.tar.gz
@@ -11,6 +11,7 @@ URL:		http://mosh.mit.edu/
 BuildRequires:	boost-devel
 BuildRequires:	libutempter-devel
 BuildRequires:	ncurses-devel
+BuildRequires:	protobuf
 BuildRequires:	protobuf-devel
 BuildRequires:	rpm-perlprov >= 4.1-13
 BuildRequires:	sed >= 4.0
