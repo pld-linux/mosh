@@ -1,7 +1,7 @@
 Summary:	Mosh mobile shell
 Name:		mosh
 Version:	1.1.3
-Release:	0.1
+Release:	0.2
 License:	GPL v3+
 Group:		X11/Applications
 Source0:	https://github.com/downloads/keithw/mosh/%{name}-%{version}.tar.gz
@@ -12,13 +12,7 @@ BuildRequires:	libutempter-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	protobuf-devel
 BuildRequires:	zlib-devel
-Requires:	boost
-Requires:	libutempter
-Requires:	ncurses
 Requires:	perl-IO-Pty
-Requires:	protobuf
-Requires:	protobuf-libs
-Requires:	zlib
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -39,7 +33,6 @@ especially over Wi-Fi, cellular, and long-distance links.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
@@ -49,7 +42,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS THANKS
-
 %attr(755,root,root) %{_bindir}/%{name}
 %attr(755,root,root) %{_bindir}/%{name}-client
 %attr(755,root,root) %{_bindir}/%{name}-server
