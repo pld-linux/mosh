@@ -1,7 +1,8 @@
+%include	/usr/lib/rpm/macros.perl
 Summary:	Mosh mobile shell
 Name:		mosh
 Version:	1.1.3
-Release:	0.2
+Release:	0.5
 License:	GPL v3+
 Group:		X11/Applications
 Source0:	https://github.com/downloads/keithw/mosh/%{name}-%{version}.tar.gz
@@ -11,8 +12,9 @@ BuildRequires:	boost-devel
 BuildRequires:	libutempter-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	protobuf-devel
+BuildRequires:	rpm-perlprov >= 4.1-13
+BuildRequires:	sed >= 4.0
 BuildRequires:	zlib-devel
-Requires:	perl-IO-Pty
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -25,6 +27,7 @@ especially over Wi-Fi, cellular, and long-distance links.
 
 %prep
 %setup -q
+%{__sed} -i -e '1s,^#!.*perl,#!%{__perl},' scripts/mosh
 
 %build
 %configure \
