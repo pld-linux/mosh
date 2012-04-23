@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	verbose		# verbose build (V=1)
+
 %include	/usr/lib/rpm/macros.perl
 Summary:	Mosh mobile shell
 Name:		mosh
@@ -34,7 +38,8 @@ especially over Wi-Fi, cellular, and long-distance links.
 %configure \
 	--enable-compile-warnings=error \
 	CPPFLAGS="-I/usr/include/ncurses"
-%{__make}
+%{__make} \
+	%{?with_verbose:V=1}
 
 %install
 rm -rf $RPM_BUILD_ROOT
