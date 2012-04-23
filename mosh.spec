@@ -34,8 +34,7 @@ especially over Wi-Fi, cellular, and long-distance links.
 %configure \
 	--enable-compile-warnings=error \
 	CPPFLAGS="-I/usr/include/ncurses"
-%{__make} \
-	-Werror
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
