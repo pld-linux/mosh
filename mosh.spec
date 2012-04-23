@@ -2,7 +2,7 @@
 Summary:	Mosh mobile shell
 Name:		mosh
 Version:	1.1.3
-Release:	1
+Release:	2
 License:	GPL v3+
 Group:		X11/Applications
 Source0:	https://github.com/downloads/keithw/mosh/%{name}-%{version}.tar.gz
@@ -32,8 +32,10 @@ especially over Wi-Fi, cellular, and long-distance links.
 
 %build
 %configure \
+	--enable-compile-warnings=error \
 	CPPFLAGS="-I/usr/include/ncurses"
-%{__make}
+%{__make} \
+	-Werror
 
 %install
 rm -rf $RPM_BUILD_ROOT
