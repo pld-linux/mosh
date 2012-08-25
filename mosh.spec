@@ -23,6 +23,7 @@ BuildRequires:	binutils >= 2.20.51.0.2
 BuildRequires:	libstdc++-devel >= 5:4.0
 BuildRequires:	libutempter-devel
 BuildRequires:	ncurses-devel
+BuildRequires:	pkgconfig
 BuildRequires:	protobuf
 BuildRequires:	protobuf-devel
 BuildRequires:	rpm-perlprov >= 4.1-13
