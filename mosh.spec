@@ -2,6 +2,13 @@
 # Conditional build:
 %bcond_without	verbose		# verbose build (V=1)
 
+%if "%{pld_release}" == "ac"
+# add suffix, but allow ccache, etc in ~/.rpmmacros
+%{expand:%%define	__cc	%(echo '%__cc' | sed -e 's,-gcc,-gcc4,')}
+%{expand:%%define	__cxx	%(echo '%__cxx' | sed -e 's,-g++,-g++4,')}
+%{expand:%%define	__cpp	%(echo '%__cpp' | sed -e 's,-gcc,-gcc4,')}
+%endif
+
 %include	/usr/lib/rpm/macros.perl
 Summary:	Mosh mobile shell
 Name:		mosh
@@ -12,14 +19,18 @@ Group:		X11/Applications
 Source0:	https://github.com/downloads/keithw/mosh/%{name}-%{version}.tar.gz
 # Source0-md5:	7ed5b857307685794dcd120afe5bdf52
 URL:		http://mosh.mit.edu/
+BuildRequires:	binutils >= 2.20.51.0.2
 BuildRequires:	libutempter-devel
 BuildRequires:	ncurses-devel
-BuildRequires:	pkgconfig
 BuildRequires:	protobuf
 BuildRequires:	protobuf-devel
 BuildRequires:	rpm-perlprov >= 4.1-13
 BuildRequires:	sed >= 4.0
 BuildRequires:	zlib-devel
+# gcc4 might be installed, but not current __cc
+%if "%(echo %{cc_version} | cut -d. -f1,2)" < "4.0"
+BuildRequires:	__cc >= 4.0
+%endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
