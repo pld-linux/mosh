@@ -14,6 +14,7 @@ Source0:	https://github.com/downloads/keithw/mosh/%{name}-%{version}.tar.gz
 URL:		http://mosh.mit.edu/
 BuildRequires:	libutempter-devel
 BuildRequires:	ncurses-devel
+BuildRequires:	pkgconfig
 BuildRequires:	protobuf
 BuildRequires:	protobuf-devel
 BuildRequires:	rpm-perlprov >= 4.1-13
