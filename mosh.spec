@@ -20,7 +20,7 @@ Source0:	https://github.com/downloads/keithw/mosh/%{name}-%{version}.tar.gz
 # Source0-md5:	7ed5b857307685794dcd120afe5bdf52
 URL:		http://mosh.mit.edu/
 BuildRequires:	binutils >= 2.20.51.0.2
-BuildRequires:	libstdc++-devel >= 6:4.0
+BuildRequires:	libstdc++-devel >= 5:4.0
 BuildRequires:	libutempter-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	protobuf
