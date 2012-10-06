@@ -1,4 +1,5 @@
 #
+
 # Conditional build:
 %bcond_without	verbose		# verbose build (V=1)
 
@@ -12,17 +13,18 @@
 %include	/usr/lib/rpm/macros.perl
 Summary:	Mosh mobile shell
 Name:		mosh
-Version:	1.2.2
-Release:	1
+Version:	1.2.2.95rc1
+Release:	0.1
 License:	GPL v3+
 Group:		X11/Applications
 Source0:	https://github.com/downloads/keithw/mosh/%{name}-%{version}.tar.gz
-# Source0-md5:	7ed5b857307685794dcd120afe5bdf52
+# Source0-md5:	3bfba35b09a80c4a8f3bebd4dc6f8c94
 URL:		http://mosh.mit.edu/
 BuildRequires:	binutils >= 2.20.51.0.2
 BuildRequires:	libstdc++-devel >= 5:4.0
 BuildRequires:	libutempter-devel
 BuildRequires:	ncurses-devel
+BuildRequires:	openssl-devel
 BuildRequires:	pkgconfig
 BuildRequires:	protobuf
 BuildRequires:	protobuf-devel
