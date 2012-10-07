@@ -37,6 +37,10 @@ BuildRequires:	__cc >= 4.0
 %endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+# PLD stack protector flags are weaker than upstream, filter them out
+# https://github.com/keithw/mosh/issues/203
+%define		filterout_cxx	-fstack-protector --param=ssp-buffer-size=4
+
 %description
 Remote terminal application that allows roaming, supports intermittent
 connectivity, and provides intelligent local echo and line editing of
