@@ -1,4 +1,5 @@
 #
+
 # Conditional build:
 %bcond_without	verbose		# verbose build (V=1)
 
@@ -23,6 +24,7 @@ BuildRequires:	binutils >= 2.20.51.0.2
 BuildRequires:	libstdc++-devel >= 5:4.0
 BuildRequires:	libutempter-devel
 BuildRequires:	ncurses-devel
+BuildRequires:	openssl-devel
 BuildRequires:	pkgconfig
 BuildRequires:	protobuf
 BuildRequires:	protobuf-devel
@@ -34,6 +36,10 @@ BuildRequires:	zlib-devel
 BuildRequires:	__cc >= 4.0
 %endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+# PLD stack protector flags are weaker than upstream, filter them out
+# https://github.com/keithw/mosh/issues/203
+%define		filterout_cxx	-fstack-protector --param=ssp-buffer-size=4
 
 %description
 Remote terminal application that allows roaming, supports intermittent
