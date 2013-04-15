@@ -13,12 +13,12 @@
 %include	/usr/lib/rpm/macros.perl
 Summary:	Mosh mobile shell
 Name:		mosh
-Version:	1.2.3
+Version:	1.2.4
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications
-Source0:	https://github.com/downloads/keithw/mosh/%{name}-%{version}.tar.gz
-# Source0-md5:	39c20391c84e639fcb51581c56cee762
+Source0:	http://mosh.mit.edu/%{name}-%{version}.tar.gz
+# Source0-md5:	c2d918f4d91fdc32546e2e089f9281b2
 URL:		http://mosh.mit.edu/
 BuildRequires:	binutils >= 2.20.51.0.2
 BuildRequires:	libstdc++-devel >= 5:4.0
@@ -39,7 +39,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # PLD stack protector flags are weaker than upstream, filter them out
 # https://github.com/keithw/mosh/issues/203
-%define		filterout_cxx	-fstack-protector --param=ssp-buffer-size=4
+%define		_ssp_cflags	%{nil}
 
 %description
 Remote terminal application that allows roaming, supports intermittent
