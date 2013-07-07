@@ -14,7 +14,7 @@
 Summary:	Mosh mobile shell
 Name:		mosh
 Version:	1.2.4
-Release:	1
+Release:	2
 License:	GPL v3+
 Group:		X11/Applications
 Source0:	http://mosh.mit.edu/%{name}-%{version}.tar.gz
