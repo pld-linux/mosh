@@ -16,12 +16,18 @@ License:	GPL v3+
 Group:		X11/Applications
 Source0:	http://mosh.mit.edu/%{name}-%{version}.tar.gz
 # Source0-md5:	c2d918f4d91fdc32546e2e089f9281b2
+Patch100:	https://github.com/keithw/mosh/compare/%{name}-1.2.4...c6cd99b.patch
+# Patch100-md5:	3e8455f30b5fb6cd7b24a203c00a549c
 URL:		http://mosh.mit.edu/
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	binutils >= 2.20.51.0.2
 BuildRequires:	libstdc++-devel >= 5:4.0
+BuildRequires:	libtool
 BuildRequires:	libutempter-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	openssl-devel
+BuildRequires:	patchutils
 BuildRequires:	pkgconfig
 BuildRequires:	protobuf
 BuildRequires:	protobuf-devel
@@ -48,9 +54,16 @@ especially over Wi-Fi, cellular, and long-distance links.
 
 %prep
 %setup -q
+filterdiff -p1 -x 'debian/*' -x 'fedora/*' -x 'macosx/*' %{PATCH100} > branch.diff
+sed -i -e '/^diff /d' branch.diff
+%{__patch} -p1 < branch.diff
 %{__sed} -i -e '1s,^#!.*perl,#!%{__perl},' scripts/mosh
 
 %build
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__automake}
 CPPFLAGS="-I/usr/include/ncurses"
 %configure \
 	--disable-silent-rules \
