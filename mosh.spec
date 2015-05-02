@@ -11,13 +11,15 @@
 Summary:	Mosh mobile shell
 Name:		mosh
 Version:	1.2.4
-Release:	3
+Release:	4
 License:	GPL v3+
 Group:		X11/Applications
 Source0:	http://mosh.mit.edu/%{name}-%{version}.tar.gz
 # Source0-md5:	c2d918f4d91fdc32546e2e089f9281b2
 Patch100:	https://github.com/keithw/mosh/compare/%{name}-1.2.4...c6cd99b.patch
 # Patch100-md5:	3e8455f30b5fb6cd7b24a203c00a549c
+Patch0:		https://github.com/keithw/mosh/pull/583.patch
+# Patch0-md5:	7eb14665ef06072591e5bcd80780c0e4
 URL:		http://mosh.mit.edu/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -44,6 +46,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 # https://github.com/keithw/mosh/issues/203
 %define		_ssp_cflags	%{nil}
 
+%define		specflags	-Wno-error=non-virtual-dtor
+
 %description
 Remote terminal application that allows roaming, supports intermittent
 connectivity, and provides intelligent local echo and line editing of
@@ -57,6 +61,7 @@ especially over Wi-Fi, cellular, and long-distance links.
 filterdiff -p1 -x 'debian/*' -x 'fedora/*' -x 'macosx/*' %{PATCH100} > branch.diff
 sed -i -e '/^diff /d' branch.diff
 %{__patch} -p1 < branch.diff
+%patch0 -p1
 %{__sed} -i -e '1s,^#!.*perl,#!%{__perl},' scripts/mosh
 
 %build
