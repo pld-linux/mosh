@@ -1,8 +1,5 @@
-#
 
-# Conditional build:
-%bcond_without	verbose		# verbose build (V=1)
-
+# force gcc4 for ac
 %if "%{pld_release}" == "ac"
 # add suffix, but allow ccache, etc in ~/.rpmmacros
 %{expand:%%define	__cc	%(echo '%__cc' | sed -e 's,-gcc,-gcc4,')}
@@ -54,11 +51,11 @@ especially over Wi-Fi, cellular, and long-distance links.
 %{__sed} -i -e '1s,^#!.*perl,#!%{__perl},' scripts/mosh
 
 %build
+CPPFLAGS="-I/usr/include/ncurses"
 %configure \
-	--enable-compile-warnings=error \
-	CPPFLAGS="-I/usr/include/ncurses"
-%{__make} \
-	%{?with_verbose:V=1}
+	--disable-silent-rules \
+	--enable-compile-warnings=error
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
