@@ -1,3 +1,6 @@
+#
+# Conditional build:
+%bcond_without	agent		# with ssh agent forwarding patch
 
 # force gcc4 for ac
 %if "%{pld_release}" == "ac"
@@ -58,18 +61,20 @@ especially over Wi-Fi, cellular, and long-distance links.
 
 %prep
 %setup -q
+%if %{with agent}
 filterdiff -p1 -x 'debian/*' -x 'fedora/*' -x 'macosx/*' %{PATCH100} > branch.diff
 sed -i -e '/^diff /d' branch.diff
 %{__patch} -p1 < branch.diff
 %patch0 -p1
+%endif
 %{__sed} -i -e '1s,^#!.*perl,#!%{__perl},' scripts/mosh
 
 %build
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
+%{__autoheader}
 %{__automake}
-CPPFLAGS="-I/usr/include/ncurses"
 %configure \
 	--disable-silent-rules \
 	--enable-compile-warnings=error
