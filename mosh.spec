@@ -13,13 +13,12 @@
 %include	/usr/lib/rpm/macros.perl
 Summary:	Mosh mobile shell
 Name:		mosh
-Version:	1.2.4.95rc2
-Release:	0.1
+Version:	1.2.5
+Release:	1
 License:	GPL v3+
 Group:		X11/Applications
-#Source0:	http://mosh.mit.edu/%{name}-%{version}.tar.gz
-Source0:	https://github.com/keithw/mosh/archive/%{name}-%{version}.tar.gz
-# Source0-md5:	8ef57d233d662cfac7b28747802b346a
+Source0:	http://mosh.mit.edu/%{name}-%{version}.tar.gz
+# Source0-md5:	05511759169785ddfb4a6d48a893c9ab
 Patch0:		https://github.com/keithw/mosh/pull/583.patch
 # Patch0-md5:	7eb14665ef06072591e5bcd80780c0e4
 URL:		http://mosh.mit.edu/
@@ -59,8 +58,7 @@ Mosh is a replacement for SSH. It's more robust and responsive,
 especially over Wi-Fi, cellular, and long-distance links.
 
 %prep
-%setup -qc
-mv mosh-mosh-%{version}/* .
+%setup -qn %{name}-release-%{version}
 %if %{with agent}
 %patch0 -p1
 %endif
