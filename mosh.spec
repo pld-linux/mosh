@@ -14,7 +14,7 @@
 Summary:	Mosh mobile shell
 Name:		mosh
 Version:	1.2.5
-Release:	1
+Release:	2
 License:	GPL v3+
 Group:		X11/Applications
 Source0:	http://mosh.mit.edu/%{name}-%{version}.tar.gz
@@ -58,7 +58,7 @@ Mosh is a replacement for SSH. It's more robust and responsive,
 especially over Wi-Fi, cellular, and long-distance links.
 
 %prep
-%setup -qn %{name}-release-%{version}
+%setup -q
 %if %{with agent}
 %patch0 -p1
 %endif
