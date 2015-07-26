@@ -18,7 +18,7 @@ Release:	1
 License:	GPL v3+
 Group:		X11/Applications
 Source0:	http://mosh.mit.edu/%{name}-%{version}.tar.gz
-# Source0-md5:	05511759169785ddfb4a6d48a893c9ab
+# Source0-md5:	56d7147cf7031583ba7d8db09033e0c5
 Patch0:		https://github.com/keithw/mosh/pull/583.patch
 # Patch0-md5:	7eb14665ef06072591e5bcd80780c0e4
 URL:		http://mosh.mit.edu/
