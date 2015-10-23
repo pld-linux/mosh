@@ -10,11 +10,12 @@
 %{expand:%%define	__cpp	%(echo '%__cpp' | sed -e 's,-gcc,-gcc4,')}
 %endif
 
+%define		protobuf_ver	2.6.1
 %include	/usr/lib/rpm/macros.perl
 Summary:	Mosh mobile shell
 Name:		mosh
 Version:	1.2.5
-Release:	2
+Release:	3
 License:	GPL v3+
 Group:		X11/Applications
 Source0:	http://mosh.mit.edu/%{name}-%{version}.tar.gz
@@ -32,11 +33,12 @@ BuildRequires:	ncurses-devel
 BuildRequires:	openssl-devel
 BuildRequires:	patchutils
 BuildRequires:	pkgconfig
-BuildRequires:	protobuf
-BuildRequires:	protobuf-devel
+BuildRequires:	protobuf >= %{protobuf_ver}
+BuildRequires:	protobuf-devel >= %{protobuf_ver}
 BuildRequires:	rpm-perlprov >= 4.1-13
 BuildRequires:	sed >= 4.0
 BuildRequires:	zlib-devel
+Requires:	protobuf-libs >= %{protobuf_ver}
 # gcc4 might be installed, but not current __cc
 %if "%(echo %{cc_version} | cut -d. -f1,2)" < "4.0"
 BuildRequires:	__cc >= 4.0
