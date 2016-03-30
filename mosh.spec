@@ -14,8 +14,8 @@ Version:	1.2.4
 Release:	3
 License:	GPL v3+
 Group:		X11/Applications
-Source0:	http://mosh.mit.edu/%{name}-%{version}.tar.gz
-# Source0-md5:	c2d918f4d91fdc32546e2e089f9281b2
+Source0:	https://github.com/mobile-shell/mosh/archive/lowbandwidth.tar.gz
+# Source0-md5:	e6f10f597a2f522209e744ad218f7f08
 URL:		http://mosh.mit.edu/
 BuildRequires:	binutils >= 2.20.51.0.2
 BuildRequires:	libstdc++-devel >= 5:4.0
@@ -47,11 +47,16 @@ Mosh is a replacement for SSH. It's more robust and responsive,
 especially over Wi-Fi, cellular, and long-distance links.
 
 %prep
-%setup -q
+%setup -qc
+mv mosh-*/* .
 %{__sed} -i -e '1s,^#!.*perl,#!%{__perl},' scripts/mosh
 
 %build
-CPPFLAGS="-I/usr/include/ncurses"
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 %configure \
 	--disable-silent-rules \
 	--enable-compile-warnings=error
