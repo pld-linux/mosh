@@ -6,12 +6,13 @@
 %include	/usr/lib/rpm/macros.perl
 Summary:	Mosh mobile shell
 Name:		mosh
-Version:	1.2.5.95rc1
-Release:	0.1
+Version:	1.2.6
+Release:	1
 License:	GPL v3+
 Group:		X11/Applications
-Source0:	https://github.com/mobile-shell/mosh/releases/download/%{name}-%{version}/mosh-%{version}.tar.gz
-# Source0-md5:	669bec1a7a7daa1b7bc031818798b432
+#Source0:	https://github.com/mobile-shell/mosh/releases/download/%{name}-%{version}/mosh-%{version}.tar.gz
+Source0:	http://mosh.mit.edu/%{name}-%{version}.tar.gz
+# Source0-md5:	bb4e24795bb135a754558176a981ee9e
 Patch0:		https://github.com/keithw/mosh/pull/583.patch
 # Patch0-md5:	7eb14665ef06072591e5bcd80780c0e4
 URL:		http://mosh.mit.edu/
