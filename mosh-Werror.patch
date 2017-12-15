@@ -1,0 +1,11 @@
+--- mosh-1.3.2/src/terminal/terminalframebuffer.cc.orig	2017-12-15 21:34:01.064968374 +0100
++++ mosh-1.3.2/src/terminal/terminalframebuffer.cc	2017-12-15 21:34:05.881877497 +0100
+@@ -52,7 +52,7 @@
+     fallback( false ),
+     wrap( false )
+ {
+-  assert( false );
++//assert( false ); // this causes "uninitialized" warning on Cell() use in Raw()
+ }
+ 
+ void Cell::reset( color_type background_color )

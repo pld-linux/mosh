@@ -5,17 +5,19 @@
 %define		protobuf_ver	2.6.1
 %include	/usr/lib/rpm/macros.perl
 Summary:	Mosh mobile shell
+Summary(pl.UTF-8):	Mosh - przenośna powłoka
 Name:		mosh
 Version:	1.3.2
-Release:	1
+Release:	2
 License:	GPL v3+
 Group:		Applications/Networking
 Source0:	https://mosh.org/%{name}-%{version}.tar.gz
 # Source0-md5:	5122f4d2b973ab7c38dcdac8c35cb61e
 Patch0:		https://github.com/keithw/mosh/pull/583.patch
+Patch1:		%{name}-Werror.patch
 # Patch0-md5:	7eb14665ef06072591e5bcd80780c0e4
 URL:		https://mosh.org/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.61
 BuildRequires:	automake
 BuildRequires:	binutils >= 2.20.51.0.2
 BuildRequires:	libstdc++-devel >= 5:4.0
@@ -48,16 +50,25 @@ user keystrokes.
 Mosh is a replacement for SSH. It's more robust and responsive,
 especially over Wi-Fi, cellular, and long-distance links.
 
+%description -l pl.UTF-8
+Zdalna aplikacja terminala, pozwalająca na przemieszczanie,
+obsługująca przerywaną łączność i zapewniająca inteligentne lokalne
+echo oraz edycję linii.
+
+Mosh to zamiennik SSH. Jest potężniejszy i responsywny, w
+szczególności po połączeniach Wi-Fi, komórkowych i długodystansowych.
+
 %prep
 %setup -q
 %if %{with agent}
 %patch0 -p1
 %endif
+%patch1 -p1
 %{__sed} -i -e '1s,^#!.*perl,#!%{__perl},' scripts/mosh.pl
 
 %build
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
