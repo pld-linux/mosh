@@ -8,7 +8,7 @@ Summary:	Mosh mobile shell
 Summary(pl.UTF-8):	Mosh - przenośna powłoka
 Name:		mosh
 Version:	1.3.2
-Release:	6
+Release:	7
 License:	GPL v3+
 Group:		Applications/Networking
 Source0:	https://mosh.org/%{name}-%{version}.tar.gz
