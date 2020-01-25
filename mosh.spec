@@ -3,7 +3,6 @@
 %bcond_with	agent		# with ssh agent forwarding patch
 
 %define		protobuf_ver	2.6.1
-%include	/usr/lib/rpm/macros.perl
 Summary:	Mosh mobile shell
 Summary(pl.UTF-8):	Mosh - przenośna powłoka
 Name:		mosh
