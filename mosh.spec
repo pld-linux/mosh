@@ -6,15 +6,15 @@
 Summary:	Mosh mobile shell
 Summary(pl.UTF-8):	Mosh - przenośna powłoka
 Name:		mosh
-Version:	1.3.2
-Release:	11
+Version:	1.4.0
+Release:	1
 License:	GPL v3+
 Group:		Applications/Networking
 Source0:	https://mosh.org/%{name}-%{version}.tar.gz
-# Source0-md5:	5122f4d2b973ab7c38dcdac8c35cb61e
+# Source0-md5:	c34a647f8545565d79188acacaea7559
 Patch0:		https://github.com/keithw/mosh/pull/583.patch
-Patch1:		%{name}-Werror.patch
 # Patch0-md5:	7eb14665ef06072591e5bcd80780c0e4
+Patch1:		%{name}-Werror.patch
 Patch2:		%{name}-gcc8.patch
 URL:		https://mosh.org/
 BuildRequires:	autoconf >= 2.61
