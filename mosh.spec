@@ -59,7 +59,7 @@ szczególności po połączeniach Wi-Fi, komórkowych i długodystansowych.
 %prep
 %setup -q
 %if %{with agent}
-%patch0 -p1
+%patch -P0 -p1
 %endif
 %{__sed} -i -e '1s,^#!.*perl,#!%{__perl},' scripts/mosh.pl
 
